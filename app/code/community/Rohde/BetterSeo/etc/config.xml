@@ -1,29 +1,34 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <Rohde_Seo>
+        <Rohde_BetterSeo>
             <version>1.0.0</version>
-        </Rohde_Seo>
+        </Rohde_BetterSeo>
     </modules>
     <frontend>
         <events>
             <controller_action_layout_generate_blocks_after>
                 <observers>
-                    <rohde_seo>
+                    <rohde_betterseo>
                         <type>singleton</type>
-                        <class>Rohde_Seo_Model_Observer</class>
+                        <class>Rohde_BetterSeo_Model_Observer</class>
                         <method>alternateLinks</method>
-                    </rohde_seo>
+                    </rohde_betterseo>
                 </observers>
             </controller_action_layout_generate_blocks_after>
         </events>
     </frontend>
     <global>
         <page />
+        <helpers>
+            <betterseo>
+                <class>Rohde_BetterSeo_Helper</class>
+            </betterseo>
+        </helpers>
         <models>
-            <rohde_seo>
-                <class>Rohde_Seo_Model</class>
-            </rohde_seo>
+            <betterseo>
+                <class>Rohde_BetterSeo_Model</class>
+            </betterseo>
         </models>
         <resources />
         <extraconfig />

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Rohde_BetterSeo>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Page />
+                <Mage_Widget />
+                <Mage_Adminhtml />
+            </depends>
+        </Rohde_BetterSeo>
+    </modules>
+</config>
