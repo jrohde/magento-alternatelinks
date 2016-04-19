@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Rohde_Seo>
+            <version>1.0.0</version>
+        </Rohde_Seo>
+    </modules>
+    <frontend>
+        <events>
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <rohde_seo>
+                        <type>singleton</type>
+                        <class>Rohde_Seo_Model_Observer</class>
+                        <method>alternateLinks</method>
+                    </rohde_seo>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
+        </events>
+    </frontend>
+    <global>
+        <page />
+        <models>
+            <rohde_seo>
+                <class>Rohde_Seo_Model</class>
+            </rohde_seo>
+        </models>
+        <resources />
+        <extraconfig />
+        <blocks />
+    </global>
+</config>
