@@ -7,7 +7,7 @@
     </modules>
     <frontend>
         <events>
-            <controller_action_layout_generate_blocks_after>
+            <core_block_abstract_to_html_after>
                 <observers>
                     <rohde_betterseo>
                         <type>singleton</type>
@@ -15,7 +15,7 @@
                         <method>alternateLinks</method>
                     </rohde_betterseo>
                 </observers>
-            </controller_action_layout_generate_blocks_after>
+            </core_block_abstract_to_html_after>
         </events>
     </frontend>
     <global>
@@ -34,4 +34,37 @@
         <extraconfig />
         <blocks />
     </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <betterseo>
+                                            <title>Better SEO</title>
+                                        </betterseo>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+        <translate>
+            <modules>
+                <Rohde_BetterSeo>
+                    <files>
+                        <default>Rohde_BetterSeo.csv</default>
+                    </files>
+                </Rohde_BetterSeo>
+            </modules>
+        </translate>
+    </adminhtml>
 </config>

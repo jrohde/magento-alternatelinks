@@ -1,6 +1,6 @@
 <?php
 
-class Rohde_Seo_Model_System_Config_Source_Dropdown_Values
+class Rohde_BetterSeo_Model_System_Config_Source_Dropdown_Formats
 {
     public function toOptionArray()
     {
