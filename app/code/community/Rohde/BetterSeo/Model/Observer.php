@@ -28,19 +28,8 @@ class Rohde_BetterSeo_Model_Observer
                     } else {
                         $url = $store->getCurrentUrl();
                     }
-                    // create hreflang uri
                     $urlExplode = explode('?', $url, 2);
-                    if ($store->getCode() == 'default') {
-                        $urlPart = $urlExplode[0];
-                        $del = '?';
-                    } else {
-                        $urlPart = $urlExplode[0].'?___store='.$store->getCode();
-                        $del = '&';
-                    }
-                    // add existing parameters again when present
-                    if (isset($urlExplode[1]) && !empty($urlExplode[1])) {
-                        $urlPart .= $del.$urlExplode[1];
-                    }
+                    $urlPart = ($store->getCode() == 'default') ? $urlExplode[0] : $urlExplode[0].'?___store='.$store->getCode();
                     $lang = $store->getConfig('general/locale/code');
                     $xdefaults[substr($lang, 0, 2)] = $urlPart;
                     if(Mage::getStoreConfig("betterseo/alternatelinks/hreflang_value") == 'language') {
