@@ -33,7 +33,7 @@ class Rohde_BetterSeo_Model_Observer
                     if ($store->getCode() == 'default') {
                         $urlPart = $urlExplode[0];
                         $del = '?';
-                    else {
+                    } else {
                         $urlPart = $urlExplode[0].'?___store='.$store->getCode();
                         $del = '&';
                     }
