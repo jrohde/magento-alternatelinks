@@ -22,6 +22,12 @@ class Rohde_BetterSeo_Helper_Data extends Mage_Core_Helper_Abstract
         return $coreUrl->getRequestPath();
     }
 
+    public function rewrittenCategoryCmsUrl($identifier, $categoryId, $storeId) {
+        $vehicle = strstr($identifier, '/');
+        $categoryUrlKey = Mage::getModel('catalog/category')->setStoreId($storeId)->load($categoryId)->getUrlKey();
+        return $categoryUrlKey.$vehicle;
+    }
+
     public function rewrittenCmsUrl($urlkey, $storeId) {
         $coreUrl = Mage::getModel('core/url_rewrite');
         $coreUrl->setStoreId($storeId);

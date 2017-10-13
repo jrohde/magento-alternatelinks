@@ -14,6 +14,8 @@ class Rohde_BetterSeo_Model_Observer
             $prod = Mage::registry('current_product');
             $categ = Mage::registry('current_category');
             $cms = Mage::getSingleton('cms/page')->getIdentifier();
+
+
             $xdefaults = [];
             $code = '';
             foreach ($stores as $store) {
@@ -21,15 +23,20 @@ class Rohde_BetterSeo_Model_Observer
                     if ($prod) {
                         $categ ? $categId = $categ->getId() : $categId = null;
                         $url = $store->getBaseUrl() . Mage::helper('betterseo')->rewrittenProductUrl($prod->getId(), $categId, $store->getId());
-                    } elseif ($categ) {
+                    } else if ($categ && $cms) {
+                        $url = $store->getBaseUrl() . Mage::helper('betterseo')->rewrittenCategoryCmsUrl($cms, $categ->getId(), $store->getId());
+                    } else if ($categ) {
                         $url = $store->getBaseUrl() . Mage::helper('betterseo')->rewrittenCategoryUrl($categ->getId(), $store->getId());
-                    } elseif ($cms) {
+                    } else if ($cms) {
                         $url = $store->getBaseUrl() . Mage::helper('betterseo')->rewrittenCmsUrl($cms, $store->getId());
                     } else {
                         $url = $store->getCurrentUrl();
                     }
+                    Mage::log($url);
                     $urlExplode = explode('?', $url, 2);
+                    Mage::log($urlExplode);
                     $urlPart = ($store->getCode() == 'default') ? $urlExplode[0] : $urlExplode[0].'?___store='.$store->getCode();
+                    Mage::log($urlPart);
                     $lang = $store->getConfig('general/locale/code');
                     $xdefaults[substr($lang, 0, 2)] = $urlPart;
                     if(Mage::getStoreConfig("betterseo/alternatelinks/hreflang_value") == 'language') {
