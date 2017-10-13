@@ -32,11 +32,8 @@ class Rohde_BetterSeo_Model_Observer
                     } else {
                         $url = $store->getCurrentUrl();
                     }
-                    Mage::log($url);
                     $urlExplode = explode('?', $url, 2);
-                    Mage::log($urlExplode);
                     $urlPart = ($store->getCode() == 'default') ? $urlExplode[0] : $urlExplode[0].'?___store='.$store->getCode();
-                    Mage::log($urlPart);
                     $lang = $store->getConfig('general/locale/code');
                     $xdefaults[substr($lang, 0, 2)] = $urlPart;
                     if(Mage::getStoreConfig("betterseo/alternatelinks/hreflang_value") == 'language') {
